@@ -13,9 +13,9 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
-The my first personal goal was to generate a generalized model using Track1 only learning data. Stable running of only Track 1 was achieved without difficulty.However, because the stable running of Track2 was very difficult, the target was changed. The final goal was changed as follows.
+The my first personal goal was to generate a generalized model using Track1 only learning data. Stable running of only Track 1 was achieved without difficulty. However, because the stable running of Track2 was very difficult, the target was changed. The final goal was changed as follows.
 
-The goal is to use both Track1 and 2 as learning data and realize high speed and stable running in both courses.
+The goal is to use both Track1(Lake) and 2(Jungle) as learning data and realize high speed and stable running in both courses.
 
 [//]: # (Image References)
 
@@ -35,7 +35,6 @@ The goal is to use both Track1 and 2 as learning data and realize high speed and
 
 
 
-
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
@@ -48,9 +47,9 @@ My project includes the following files:
 * model.py containing the script to create and train the model
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network
-* writeup_report.md summarizing the results
-* video1.mp4 Result of Autonomous Run of Track1(simple)
-* video2.mp4 Result of Autonomous Run of Track2(complex)
+* writeup.md summarizing the results
+* video.mp4 (a video recording of my vehicle driving autonomously around the track1(Lake) for at least one full lap)
+* video_advanced.mp4 (a video recording of my vehicle driving autonomously around the track2(jungle) for at least one full lap)
 
 #### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing
@@ -76,7 +75,7 @@ The base of the adopted model is the model proposed by Nvidia. That model has be
 ![alt text][image2]
 
 In the base model architecture, there was no dropout. By adding Dropout to the fully conection(fc) layer, over learning was suppressed and good results were obtained.
-Especially, it was possible to obtain good results by setting the keep ratio in the higher fc layer to a large value and setting the keep rate of the lower fc layer to a smaller value.
+Especially, it was possible to obtain good results by setting the keep ratio in the higher fc layer to a large value and setting the keep rate of the lower fc layer to a smaller value. Furthermore, Adam optimizer is used.
 
 The set value of Dropout tried many variations. As a result, the values shown in My model architecture were adopted.
 
@@ -90,7 +89,7 @@ Training data was chosen to keep the vehicle driving on the road. I used a combi
 ![alt text][image4]
 ![alt text][image5]
 
-In addition, I attempted generalization of the model by using learning data of Track1 only at the beginning, but it was very difficult. Therefore, I decided to add image data of Track2 as a new strategy. Especially in the addition of the learning image, the caution points are as follows.In the trial process, scenes that were out of the course were added as learning images.The images added by focusing are as follows.
+In addition, I attempted generalization of the model by using learning data of Track1 only at the beginning, but it was very difficult. Therefore, I decided to add image data of Track2 as a new strategy. Especially in the addition of the learning image, the caution points are as follows.In the trial result, failed scenes were added as learning data. The images added by focusing are as follows.
 
 ![alt text][image6]
 
@@ -116,12 +115,16 @@ In order to increase variations of training data, the following augmenting proce
 
 The processing result image is as follows.
 
+・fliped image
 ![alt text][image8]
 
+・randam brightness
 ![alt text][image9]
 
+・randam shadow
 ![alt text][image10]
 
+・randam rodation
 ![alt text][image11]
 
 ##### 2.4 Final processing of input data
