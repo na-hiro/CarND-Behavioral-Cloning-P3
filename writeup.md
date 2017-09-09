@@ -115,16 +115,16 @@ In order to increase variations of training data, the following augmenting proce
 
 The processing result image is as follows.
 
-・fliped image
+・ fliped image
 ![alt text][image8]
 
-・randam brightness
+・ randam brightness
 ![alt text][image9]
 
-・randam shadow
+・ randam shadow
 ![alt text][image10]
 
-・randam rodation
+・ randam rodation
 ![alt text][image11]
 
 ##### 2.4 Final processing of input data
